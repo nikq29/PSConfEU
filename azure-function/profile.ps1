@@ -15,7 +15,7 @@ if ($env:MSI_SECRET) {
     Disable-AzContextAutosave -Scope Process | Out-Null
     Connect-AzAccount -Identity
 }
-    Connect-MgGraph -Identity
+    Connect-MgGraph -Identity -NoWelcome
 
 # Uncomment the next line to enable legacy AzureRm alias in Azure PowerShell.
 # Enable-AzureRmAlias
@@ -25,6 +25,5 @@ function Send-Response ($status, $body){
     Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
     StatusCode = $status
     Body = $body
-})
-    
+})   
 }

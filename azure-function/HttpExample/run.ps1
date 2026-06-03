@@ -47,4 +47,4 @@ if ($null -ne $group) {
 }
 
 # Associate values to output bindings by calling 'Push-OutputBinding'.
-Send-Response -status [HttpStatusCode]::OK -Body $body
+Send-Response -status ([HttpStatusCode]::OK) -Body $body

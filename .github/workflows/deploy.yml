@@ -6,22 +6,19 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build:
     name: Build Azure Function
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install modules and build zip
         run: |
           pwsh ./azure-function/Modules/installModules.ps1
           mkdir dist
           cd ./azure-function
           zip -r ../dist/azure-function.zip ./*
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: azure-function-zip
           path: dist/azure-function.zip
@@ -34,7 +31,7 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: azure-function-zip
           path: dist/

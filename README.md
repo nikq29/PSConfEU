@@ -1,0 +1,1 @@
+Credits to https://gitlab.com/rokicool/azure-function-app

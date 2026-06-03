@@ -54,7 +54,7 @@ $requiredModules.GetEnumerator() | ForEach-Object {
 }
 
 Write-Host "Here is the list of all modules installed within the session:"
-Get-Module -ListAvailableq
+Get-Module -ListAvailable
 
 Write-Host "Here is the list of files in the CurrentUser Modules folder:"
 dir ~/.local/share/powershell/Modules

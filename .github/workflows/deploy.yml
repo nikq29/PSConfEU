@@ -10,13 +10,11 @@ jobs:
   build:
     name: Build Azure Function
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/azure-powershell:mariner-2
     steps:
       - uses: actions/checkout@v4
       - name: Install modules and build zip
         run: |
           pwsh ./azure-function/Modules/installModules.ps1
-          tdnf install zip -y
           mkdir dist
           cd ./azure-function
           zip -r ../dist/azure-function.zip ./*

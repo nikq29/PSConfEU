@@ -26,7 +26,7 @@ switch ($Request.Method) {
             Send-Response -status ([HttpStatusCode]::BadRequest) -Body "UserPrincipalName is required"
             return
         }
-        $user = Get-MgUser -UserId $upn -ErrorAction SilentlyContinue
+        $user = Get-MgUser -Filter "userPrincipalName eq '$upn'" -ErrorAction SilentlyContinue | Select-Object -First 1
         if (-not $user) {
             Send-Response -status ([HttpStatusCode]::NotFound) -Body "User not found"
             return
@@ -43,13 +43,12 @@ switch ($Request.Method) {
         }
     }
     "DELETE" {
-        $upn = $Request.Query.UserPrincipalName
-        if (-not $upn) { $upn = $Request.Body.UserPrincipalName }
+        $upn = $Request.Body.UserPrincipalName
         if (-not $upn) {
             Send-Response -status ([HttpStatusCode]::BadRequest) -Body "UserPrincipalName is required"
             return
         }
-        $user = Get-MgUser -UserId $upn -ErrorAction SilentlyContinue
+        $user = Get-MgUser -Filter "userPrincipalName eq '$upn'" -ErrorAction SilentlyContinue | Select-Object -First 1
         if (-not $user) {
             Send-Response -status ([HttpStatusCode]::NotFound) -Body "User not found"
             return

@@ -1,5 +1,4 @@
-# PSConfEU – Azure Function Group Manager
-
+# PSConfEU – Azure Function Demo
 A PowerShell Azure Function App that manages Entra ID (Azure AD) security groups and their members via the Microsoft Graph API. Built for the PSConfEU session on serverless PowerShell automation.
 
 Credits to https://gitlab.com/rokicool/azure-function-app

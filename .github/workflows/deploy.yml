@@ -11,7 +11,7 @@ jobs:
     name: Build Azure Function
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install modules and build zip
         run: |
           pwsh ./azure-function/Modules/installModules.ps1
